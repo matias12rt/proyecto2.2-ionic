@@ -1,0 +1,54 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button [routerLink]="['/home']">
+        <ion-icon slot="icon-only" name="home-outline" ></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Tienda Para Mascotas</ion-title>
+    <ion-buttons slot="end">
+      <ion-button #cartIcon>
+        <ion-icon slot="icon-only" name="cart-outline" ></ion-icon>
+        <ion-badge color="danger">2</ion-badge> <!-- Muestra cantidad de productos en el carrito -->
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-toolbar color="light">
+    <ion-searchbar placeholder="Buscar productos"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="store-page">
+  <ion-item>
+    <ion-label>Filtrar por:</ion-label>
+    <ion-select placeholder="Selecciona una categoría" >
+      <ion-select-option value="comida">Comida</ion-select-option>
+      <ion-select-option value="juguetes">Juguetes</ion-select-option>
+      <ion-select-option value="accesorios">Accesorios</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" size-md="6" size-lg="4">
+        <ion-card>
+          <img src="assets/icon/producto1.jpg" alt="Producto 1" #productImg1>
+          <ion-card-header>
+            <ion-card-title>Producto 1</ion-card-title>
+            <ion-card-subtitle>$10.00</ion-card-subtitle>
+            <ion-chip color="danger">
+              <ion-label>Oferta</ion-label>
+            </ion-chip>
+          </ion-card-header>
+          <ion-card-content>
+            <p>Descripción breve del producto. Ideal para tu mascota.</p>
+            <ion-button expand="full" color="primary" (click)="addToCart($event, productImg1)">
+              Añadir al Carrito
+            </ion-button>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <!-- Agrega más productos-->
+    </ion-row>
+  </ion-grid>
+</ion-content>

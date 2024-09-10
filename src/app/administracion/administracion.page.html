@@ -1,0 +1,77 @@
+<ion-app>
+  <ion-menu contentId="main-content">
+    <ion-header>
+      <ion-toolbar color="tertiary">
+        <ion-title>Menu </ion-title>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content class="ion-padding">
+      <ion-list>
+        <ion-item button>
+          <ion-icon slot="start" name="home-outline"></ion-icon>
+          <ion-label>Home</ion-label>
+        </ion-item>
+        <ion-item button>
+          <ion-icon slot="start" name="people-outline"></ion-icon>
+          <ion-label>Usuarios</ion-label>
+        </ion-item>
+        <ion-item button>
+          <ion-icon slot="start" name="settings-outline"></ion-icon>
+          <ion-label>Configuración</ion-label>
+        </ion-item>
+        <ion-item button>
+          <ion-icon slot="start" name="analytics-outline"></ion-icon>
+          <ion-label>Reportes</ion-label>
+        </ion-item>
+      </ion-list>
+
+      <ion-footer class="ion-no-border">
+        <ion-item lines="none" button>
+          <ion-icon slot="start" name="log-out-outline"></ion-icon>
+          <ion-label [routerLink]="['/home']">Cerrar Sesión</ion-label>
+        </ion-item>
+      </ion-footer>
+    </ion-content>
+  </ion-menu>
+
+  <div class="ion-page" id="main-content">
+    <ion-header>
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>Administración</ion-title>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content  class="ion-padding">
+      <!-- Aquí va la tabla de Angular Material -->
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <!-- Columnas de la tabla -->
+        <ng-container matColumnDef="position">
+          <th mat-header-cell *matHeaderCellDef> No. </th>
+          <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="nombre">
+          <th mat-header-cell *matHeaderCellDef> Nombre producto </th>
+          <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="valor">
+          <th mat-header-cell *matHeaderCellDef> Valor producto </th>
+          <td mat-cell *matCellDef="let element"> {{element.valor}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="cantidad">
+          <th mat-header-cell *matHeaderCellDef> Cantidad producto </th>
+          <td mat-cell *matCellDef="let element"> {{element.cantidad}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </ion-content>
+  </div>
+</ion-app>
